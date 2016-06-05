@@ -1,0 +1,22 @@
+/*
+<%= j render(@painting) %> will return content from _painting.html.erb
+partial file
+
+EXAMPLE:
+<div class="painting">
+  <a href="/paintings/12"><img src="/uploads/painting/image/12/3.png" alt="3" /></a>
+  <div class="name">3</div>
+  <div class="actions">
+    <a href="/paintings/12/edit">edit</a> |
+    <a confirm="Are you sure?" rel="nofollow" data-method="delete" href="/paintings/12">remove</a>
+  </div>
+</div>
+*/ 
+
+<% if @painting.new_record? %>
+  alert("Failed to upload painting: <%= j @painting.errors.full_messages.join(', ').html_safe %>");
+<% else %>
+  $("#paintings").append("<%= j render(@painting) %>");
+<% end %>
+
+plyr.setup();

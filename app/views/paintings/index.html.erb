@@ -1,0 +1,26 @@
+<h1>Video Gallery</h1>
+
+<!-- create.js.erb will look for this div -->
+<div id="paintings">
+  <%= render partial: 'paintings/painting', collection: @paintings %>
+</div>
+<div class="clear"></div>
+
+<%= form_for Painting.new do |f| %>
+  <%= f.label :image, "Upload videos:" %><br><br>
+  <%= f.file_field :image, multiple: true, name: "painting[image]" %>
+<% end %>
+
+<script>
+	plyr.setup();
+</script>
+
+<!-- PROGRESS BAR -->
+<!-- will be repeated for each file uploaded -->
+<!-- `o` is object -->
+<script id="template-upload" type="text/x-tmpl">
+<div class="upload">
+  {%=o.name%}
+  <div class="progress"><div class="bar" style="width: 0%"></div></div>
+</div>
+</script>
